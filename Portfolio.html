@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivangi Malviya — Product · GTM · Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#07080f;--bg2:#0d0f1a;--bg3:#12141f;--bg4:#181a28;
+  --cream:#f0ece0;--cream2:#b8b4a8;--cream3:#6e6a60;
+  --gold:#c8922a;--gold2:#e8b84a;--gold3:#ffd980;
+  --teal:#4fb8c4;--teal2:#2a9aaa;
+  --border:rgba(200,146,42,.12);--border2:rgba(200,146,42,.22);
+  --serif:'Instrument Serif',serif;--sans:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--cream);font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.7;overflow-x:hidden;}
+a{color:var(--gold2);text-decoration:none;transition:color .2s;}
+a:hover{color:var(--cream);}
+
+/* ── CANVAS BG ── */
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.55;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 4rem;background:rgba(7,8,15,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--mono);font-size:.8rem;color:var(--gold2);letter-spacing:.08em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream3);font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--gold2);}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;padding:7rem 4rem 5rem;border-bottom:1px solid var(--border);}
+.hero-inner{max-width:1100px;width:100%;margin:0 auto;}
+.hero-coords{display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.coord-item{display:flex;flex-direction:column;gap:.2rem;}
+.coord-label{font-family:var(--mono);font-size:.62rem;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;}
+.coord-city{font-family:var(--mono);font-size:.72rem;color:var(--cream3);letter-spacing:.06em;}
+.coord-val{font-family:var(--mono);font-size:.65rem;color:var(--cream3);opacity:.5;}
+.coord-arrow{font-family:var(--mono);font-size:.7rem;color:var(--gold);align-self:center;margin-top:1rem;opacity:.5;}
+.hero-tag{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block;}
+.hero-name{font-family:var(--serif);font-size:clamp(3.5rem,7vw,6.5rem);line-height:.95;color:var(--cream);margin-bottom:.6rem;}
+.hero-name em{font-style:italic;color:var(--gold2);}
+.hero-tagline{font-size:1.1rem;color:var(--cream2);border-left:2px solid var(--gold);padding-left:1rem;margin-bottom:1.4rem;line-height:1.6;max-width:520px;}
+.hero-desc{font-size:.92rem;color:var(--cream3);max-width:500px;line-height:1.9;margin-bottom:2rem;}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--bg);font-family:var(--mono);font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.75rem 1.6rem;border-radius:2px;transition:background .2s;text-decoration:none;}
+.btn-primary:hover{background:var(--gold2);color:var(--bg);}
+.btn-outline{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--cream);font-family:var(--mono);font-size:.7rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;padding:.75rem 1.6rem;border:1px solid var(--border2);border-radius:2px;transition:border-color .2s,color .2s;text-decoration:none;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold2);}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;padding:6rem 4rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem;}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);color:var(--cream);line-height:1.15;margin-bottom:.8rem;}
+.section-title em{font-style:italic;color:var(--gold2);}
+.section-rule{width:36px;height:1px;background:var(--gold);margin-bottom:2.5rem;}
+.bg2{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:start;}
+.about-text p{font-size:.93rem;color:var(--cream2);line-height:1.9;margin-bottom:1.1rem;}
+.about-text p strong{color:var(--cream);font-weight:500;}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+.about-card{background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:1.1rem;transition:border-color .2s;}
+.about-card:hover{border-color:var(--border2);}
+.about-card-title{font-family:var(--mono);font-size:.7rem;font-weight:500;color:var(--gold2);margin-bottom:.4rem;letter-spacing:.06em;}
+.about-card-body{font-size:.8rem;color:var(--cream3);line-height:1.6;}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.skill-card{background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:1.4rem;transition:border-color .2s;}
+.skill-card:hover{border-color:var(--border2);}
+.skill-card-title{font-family:var(--mono);font-size:.72rem;color:var(--gold2);margin-bottom:.8rem;letter-spacing:.06em;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.3rem;}
+.skill-tag{font-size:.67rem;color:var(--cream3);background:var(--bg4);border:1px solid var(--border);border-radius:2px;padding:.18rem .48rem;font-family:var(--mono);}
+
+/* ── EXPERIENCE ── */
+.exp-timeline{display:flex;flex-direction:column;}
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:3rem;padding:2.5rem 0;border-bottom:1px solid var(--border);}
+.exp-item:first-child{border-top:1px solid var(--border);}
+.exp-period{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem;}
+.exp-company{font-size:.85rem;color:var(--cream3);line-height:1.5;margin-bottom:.4rem;}
+.exp-location{font-family:var(--mono);font-size:.68rem;color:var(--cream3);opacity:.6;}
+.exp-type{display:inline-block;margin-top:.5rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:.15rem .55rem;border-radius:2px;}
+.exp-role{font-family:var(--serif);font-size:1.25rem;color:var(--cream);margin-bottom:.7rem;line-height:1.3;}
+.exp-highlight{background:rgba(200,146,42,.07);border:1px solid var(--border);border-left:2px solid var(--gold);border-radius:3px;padding:.7rem 1rem;margin-bottom:.9rem;font-family:var(--mono);font-size:.75rem;color:var(--gold2);}
+.exp-bullets{list-style:none;margin-bottom:.9rem;}
+.exp-bullets li{font-size:.88rem;color:var(--cream2);line-height:1.75;padding:.15rem 0 .15rem 1.2rem;position:relative;}
+.exp-bullets li::before{content:'▹';position:absolute;left:0;color:var(--gold);font-size:.7rem;top:.32rem;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:.3rem;}
+.exp-tag{font-family:var(--mono);font-size:.62rem;color:var(--cream3);background:var(--bg3);border:1px solid var(--border);border-radius:2px;padding:.15rem .45rem;}
+
+/* ── CASE STUDIES ── */
+.cases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.case-card{background:var(--bg3);border:1px solid var(--border);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,transform .2s;}
+.case-card:hover{border-color:var(--border2);transform:translateY(-3px);}
+.case-bar{height:2px;}
+.case-body{padding:1.2rem;flex:1;display:flex;flex-direction:column;}
+.case-title{font-family:var(--serif);font-size:.95rem;color:var(--cream);margin-bottom:.5rem;line-height:1.35;}
+.case-desc{font-size:.77rem;color:var(--cream3);line-height:1.6;flex:1;margin-bottom:.9rem;}
+.case-link{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border-top:1px solid var(--border);padding-top:.65rem;display:flex;align-items:center;gap:.4rem;font-weight:500;}
+.case-link:hover{color:var(--gold2);}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.edu-card{background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:1.5rem;transition:border-color .2s;}
+.edu-card:hover{border-color:var(--border2);}
+.edu-period{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem;}
+.edu-degree{font-family:var(--serif);font-size:1rem;color:var(--cream);margin-bottom:.3rem;line-height:1.3;}
+.edu-inst{font-size:.8rem;color:var(--cream3);}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem;}
+.cert-card{background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:1rem;display:flex;gap:.7rem;align-items:flex-start;transition:border-color .2s;}
+.cert-card:hover{border-color:var(--border2);}
+.cert-check{width:18px;height:18px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.15rem;font-size:.6rem;color:var(--bg);font-weight:700;}
+.cert-title{font-size:.82rem;color:var(--cream);margin-bottom:.25rem;line-height:1.4;font-weight:500;}
+.cert-issuer{font-family:var(--mono);font-size:.68rem;color:var(--cream3);}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+.contact-text{font-size:.93rem;color:var(--cream2);line-height:1.9;margin-bottom:1.5rem;}
+.contact-links{display:flex;flex-direction:column;gap:.7rem;}
+.contact-link{display:flex;align-items:center;gap:.8rem;font-size:.88rem;color:var(--cream2);padding:.8rem 1rem;background:var(--bg3);border:1px solid var(--border);border-radius:3px;transition:border-color .2s,color .2s;text-decoration:none;}
+.contact-link:hover{border-color:var(--gold);color:var(--gold2);}
+.contact-link-mono{font-family:var(--mono);font-size:.75rem;}
+.open-to{background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:1.5rem;}
+.open-to-title{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;}
+.open-to-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.87rem;color:var(--cream2);margin-bottom:.6rem;}
+.open-to-item::before{content:'▹';color:var(--gold);font-size:.7rem;flex-shrink:0;margin-top:.22rem;}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;padding:1.8rem 4rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-family:var(--mono);font-size:.7rem;color:var(--cream3);}
+.footer-name{font-family:var(--serif);font-size:.95rem;color:var(--cream);}
+
+/* ── TYPEWRITER ── */
+.typewriter{overflow:hidden;white-space:nowrap;border-right:2px solid var(--gold);animation:typing 2.5s steps(45,end) forwards, blink .75s step-end 2.5s 4;}
+@keyframes typing{from{width:0}to{width:100%}}
+@keyframes blink{50%{border-color:transparent}}
+
+/* ── REVEALS ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  section{padding:4rem 1.5rem;}
+  .hero{padding:5rem 1.5rem 3.5rem;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .skills-grid,.cases-grid,.edu-grid,.certs-grid{grid-template-columns:1fr 1fr;}
+  .exp-item{grid-template-columns:1fr;gap:.5rem;}
+  .hero-coords{gap:1.2rem;}
+  footer{padding:1.5rem;flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:600px){
+  .nav-links{display:none;}
+  .skills-grid,.cases-grid,.edu-grid,.certs-grid,.about-cards{grid-template-columns:1fr;}
+  .coord-arrow{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- Animated starfield canvas -->
+<canvas id="bg-canvas"></canvas>
+
+<nav>
+  <span class="nav-logo">SM // portfolio</span>
+  <ul class="nav-links">
+    <li><a href="javascript:void(0)" onclick="navTo('about')">About</a></li>
+    <li><a href="javascript:void(0)" onclick="navTo('skills')">Skills</a></li>
+    <li><a href="javascript:void(0)" onclick="navTo('experience')">Experience</a></li>
+    <li><a href="javascript:void(0)" onclick="navTo('case-studies')">Work</a></li>
+    <li><a href="javascript:void(0)" onclick="navTo('education')">Education</a></li>
+    <li><a href="javascript:void(0)" onclick="navTo('contact')">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <!-- Journey coordinates -->
+    <div class="hero-coords reveal">
+      <div class="coord-item">
+        <span class="coord-label">Origin</span>
+        <span class="coord-city">Indore, India</span>
+        <span class="coord-val">22.7196° N, 75.8577° E</span>
+      </div>
+      <span class="coord-arrow">──▶</span>
+      <div class="coord-item">
+        <span class="coord-label">Research</span>
+        <span class="coord-city">Taipei, Taiwan</span>
+        <span class="coord-val">25.0330° N, 121.5654° E</span>
+      </div>
+      <span class="coord-arrow">──▶</span>
+      <div class="coord-item">
+        <span class="coord-label">Living</span>
+        <span class="coord-city">Lisbon, Portugal</span>
+        <span class="coord-val">38.7223° N, 9.1393° W</span>
+      </div>
+      <span class="coord-arrow">──▶</span>
+      <div class="coord-item">
+        <span class="coord-label">Currently</span>
+        <span class="coord-city">Indore, India</span>
+        <span class="coord-val">Open to relocation</span>
+      </div>
+    </div>
+
+    <span class="hero-tag reveal">PM · GTM · Chief of Staff · Founder's Office</span>
+    <h1 class="hero-name reveal">Shivangi<br><em>Malviya</em></h1>
+    <p class="hero-tagline reveal">Product manager who likes messy problems.</p>
+    <p class="hero-desc reveal">I build B2B fintech and AI products for mid-market businesses — the kind big enough to have real pain, too small to get enterprise vendors' attention. I've owned PRDs, pipeline, and people ops — often in the same week.</p>
+    <div class="hero-cta reveal">
+      <a href="javascript:void(0)" onclick="navTo('case-studies')" class="btn-primary">View work →</a>
+      <a href="javascript:void(0)" onclick="navTo('contact')" class="btn-outline">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="bg2">
+  <div class="section-inner">
+    <p class="section-label">About me</p>
+    <h2 class="section-title">From lab bench to<br><em>product strategy</em></h2>
+    <div class="section-rule"></div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Biotech degree, brain health research in <strong>Taiwan</strong>, a stint in <strong>Portugal</strong>, now building an AI fintech startup from scratch in India. The scientific method and product thinking run on the same loop: hypothesis, experiment, measure, repeat. Product just moves faster.</p>
+        <p>What makes me different is that I don't just write specs — I <strong>build the thing</strong>. I've shipped a custom CRM and compliance management system using Claude Code with no external dev team, run outbound pipelines of 2,000+ leads, written SOPs from scratch, and handled investor-facing communication — all in the same role.</p>
+        <p>Looking for <strong>PM, GTM/Growth, Chief of Staff, or Founder's Office</strong> roles at companies where strategy meets execution and the job description is still being written.</p>
+      </div>
+      <div class="about-cards reveal">
+        <div class="about-card">
+          <div class="about-card-title">Product Strategy</div>
+          <div class="about-card-body">PRDs, roadmaps, and prioritization. I define the "what" and "why" before anyone writes code.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-title">GTM Execution</div>
+          <div class="about-card-body">ICP definition, pipeline building, cold outreach, sales enablement, founder content.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-title">Ops & Hiring</div>
+          <div class="about-card-body">SOPs, vendor management, and end-to-end hiring across multiple functions simultaneously.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-title">Automation</div>
+          <div class="about-card-body">n8n, Claude Code, Python — process redesign that frees people from repetitive work.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">Skills &amp; <em>tools</em></h2>
+    <div class="section-rule"></div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-card-title">// product & strategy</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Product Discovery</span><span class="skill-tag">Roadmapping</span><span class="skill-tag">PRD Writing</span><span class="skill-tag">MVP Scoping</span><span class="skill-tag">Agile / Scrum</span><span class="skill-tag">Stakeholder Mgmt</span><span class="skill-tag">Competitive Analysis</span><span class="skill-tag">Prioritization</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-title">// gtm & growth</div>
+        <div class="skill-tags">
+          <span class="skill-tag">ICP Definition</span><span class="skill-tag">Outbound Pipeline</span><span class="skill-tag">Cold Outreach</span><span class="skill-tag">Sales Enablement</span><span class="skill-tag">Founder Content</span><span class="skill-tag">Apollo</span><span class="skill-tag">SalesHandy</span><span class="skill-tag">Snov.io</span><span class="skill-tag">Positioning</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-title">// tools & technical</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Claude Code</span><span class="skill-tag">n8n</span><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">Figma</span><span class="skill-tag">Miro</span><span class="skill-tag">Jira</span><span class="skill-tag">Notion</span><span class="skill-tag">Excel</span><span class="skill-tag">Salesforce</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="bg2">
+  <div class="section-inner">
+    <p class="section-label">Work history</p>
+    <h2 class="section-title">Where I've<br><em>built things</em></h2>
+    <div class="section-rule"></div>
+    <div class="exp-timeline">
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-period">2025 – Present</div>
+          <div class="exp-company">CreditRight</div>
+          <div class="exp-location">Indore, India · Pre-launch AI B2B Fintech SaaS</div>
+          <span class="exp-type">Founding Role</span>
+        </div>
+        <div>
+          <h3 class="exp-role">AI Product & Strategy Manager</h3>
+          <div class="exp-highlight">Sole product + strategy hire. Owned product, GTM, operations, and hiring — simultaneously.</div>
+          <ul class="exp-bullets">
+            <li>Built a custom CRM and compliance management system from scratch using Claude and Claude Code — no external dev team. Sole technical and product owner end to end.</li>
+            <li>Authored Credit Health Analytics PRD — defined scoring models, 6-metric benchmark framework, and KPI logic (DSO, collection efficiency, liquidity, portfolio at risk) now in active development.</li>
+            <li>Built company's operating SOPs, onboarding guides, and sprint cadences from zero — no inherited process, no playbook, full ownership from day one. Coordinated 113-issue bug tracker with external dev partner.</li>
+            <li>Built ICP-targeted lead pipeline: scored 5,754-company GST dataset down to 2,194 qualified prospects at ₹60 Cr+ revenue. Developed all outreach frameworks and sales enablement materials for CFO/CEO personas.</li>
+            <li>Conducted 13-platform competitive analysis — identified 3 integration partners, 4 differentiation vectors, and key positioning gaps vs. $3B incumbents including HighRadius.</li>
+            <li>Led hiring across 4 parallel tracks (Strategy Associate, Credit Analyst, Finance Manager, Sales Manager), screened 120+ candidates.</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">Product Strategy</span><span class="exp-tag">GTM</span><span class="exp-tag">Hiring</span><span class="exp-tag">PRD Writing</span><span class="exp-tag">Claude Code</span><span class="exp-tag">B2B Fintech</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-period">Aug 2025 – Present</div>
+          <div class="exp-company">Vishwamitra</div>
+          <div class="exp-location">Indore, India · Volunteering App</div>
+          <span class="exp-type">PM</span>
+        </div>
+        <div>
+          <h3 class="exp-role">Product Manager</h3>
+          <ul class="exp-bullets">
+            <li>Defined product strategy for a two-sided marketplace. Led Agile execution for a cross-functional team of 5.</li>
+            <li>Reduced onboarding churn by 10% through targeted UX optimisation based on drop-off analysis.</li>
+            <li>Shipped the 'Impact Journal' AI feature (voice-input LLM) — boosted task completion rates by 20%.</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">Product Strategy</span><span class="exp-tag">Agile</span><span class="exp-tag">Figma</span><span class="exp-tag">LLM Integration</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-period">Sep 2023 – Sep 2025</div>
+          <div class="exp-company">Antylia Scientific</div>
+          <div class="exp-location">Remote · Cole-Parmer Group</div>
+          <span class="exp-type">Full-time</span>
+        </div>
+        <div>
+          <h3 class="exp-role">Technical Support Specialist → Product Operations</h3>
+          <ul class="exp-bullets">
+            <li>Designed and deployed n8n automation workflows integrated with Salesforce and Jira — increased team capacity by 40% and reduced MTTR by 30%.</li>
+            <li>Built a VoC-to-Jira pipeline converting customer feedback directly into development tickets, reducing manual triage effort significantly.</li>
+            <li>Led documentation for the Traceable product suite, improving cross-team handoffs and onboarding speed.</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">n8n</span><span class="exp-tag">Jira</span><span class="exp-tag">Salesforce</span><span class="exp-tag">Process Automation</span><span class="exp-tag">VoC</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-period">Sep 2019 – Mar 2023</div>
+          <div class="exp-company">National Tsing Hua University</div>
+          <div class="exp-location">Taipei, Taiwan · 25.0330° N</div>
+          <span class="exp-type">Research</span>
+        </div>
+        <div>
+          <h3 class="exp-role">Research Associate</h3>
+          <ul class="exp-bullets">
+            <li>Managed end-to-end execution of a multi-year research roadmap; directed daily operations for a team of 5+ across international collaborators.</li>
+            <li>Served as Domain SME for an early-stage AI HealthTech prototype. Secured $2,500 project funding.</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">Project Management</span><span class="exp-tag">AI HealthTech</span><span class="exp-tag">Team Leadership</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-period">Jan 2019 – Aug 2019</div>
+          <div class="exp-company">3i Molecular Solutions</div>
+          <div class="exp-location">Bengaluru, India</div>
+          <span class="exp-type">Full-time</span>
+        </div>
+        <div>
+          <h3 class="exp-role">Customer Experience Analyst</h3>
+          <ul class="exp-bullets">
+            <li>Analysed clinical performance data to identify user pain points — contributed to a 10% reduction in issue resolution time and a 12% drop in Customer Effort Score (CES).</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">Data Analysis</span><span class="exp-tag">Customer Experience</span><span class="exp-tag">Product Roadmap</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="case-studies">
+  <div class="section-inner">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Case studies<br>&amp; <em>PRDs</em></h2>
+    <div class="section-rule"></div>
+    <div class="cases-grid">
+      <div class="case-card reveal">
+        <div class="case-bar" style="background:linear-gradient(90deg,#0f766e,#0891b2)"></div>
+        <div class="case-body">
+          <div class="case-title">Compliance Calendar Engine</div>
+          <div class="case-desc">End-to-end compliance automation for a 100M+ user digital health company with FTC & FDA obligations. 250+ items across India & US. Zero software cost. Built solo with Claude Code.</div>
+          <a href="https://docs.google.com/document/d/1VmUhp2PW18TR5pnLMYoEa_qlSXaJdJ8HA2iCAxq0ovY/edit?usp=sharing" target="_blank" rel="noopener" class="case-link" style="color:#0f766e;">Read case study →</a>
+        </div>
+      </div>
+      <div class="case-card reveal">
+        <div class="case-bar" style="background:linear-gradient(90deg,#f59e0b,#f97316)"></div>
+        <div class="case-body">
+          <div class="case-title">Boosting Rapido's Customer Retention</div>
+          <div class="case-desc">Rebuilding trust in India's leading bike taxi platform with 'Ride Assurance' badges and dynamic driver incentives.</div>
+          <a href="https://drive.google.com/file/d/1i9lRn6Xg_nF1tAmsXWpPMpsflE8SrHa6/view?usp=drive_link" target="_blank" rel="noopener" class="case-link">Read case study →</a>
+        </div>
+      </div>
+      <div class="case-card reveal">
+        <div class="case-bar" style="background:linear-gradient(90deg,#db2777,#9333ea)"></div>
+        <div class="case-body">
+          <div class="case-title">Instagram Threads Growth Loops</div>
+          <div class="case-desc">Viral, Content, and Paid growth loops. Proposed 'Threads Circles' to foster niche communities for long-term retention.</div>
+          <a href="https://drive.google.com/file/d/1qK125S0jaRffdfYdrBodpF8fFu46YpUH/view?usp=drive_link" target="_blank" rel="noopener" class="case-link">Read case study →</a>
+        </div>
+      </div>
+      <div class="case-card reveal">
+        <div class="case-bar" style="background:linear-gradient(90deg,#10b981,#0d9488)"></div>
+        <div class="case-body">
+          <div class="case-title">NoBroker Home Services</div>
+          <div class="case-desc">'InstantMatch' for availability reliability and 'Pro-Verify' to build trust in Tier-1 city service professionals.</div>
+          <a href="https://drive.google.com/file/d/1sySb4SuJWVWkQYotgiFBiTx18EHNz7ub/view?usp=drive_link" target="_blank" rel="noopener" class="case-link">Read case study →</a>
+        </div>
+      </div>
+      <div class="case-card reveal">
+        <div class="case-bar" style="background:linear-gradient(90deg,#3b82f6,#06b6d4)"></div>
+        <div class="case-body">
+          <div class="case-title">Personalised Learning System</div>
+          <div class="case-desc">Solving the 'paradox of choice' for career transitioners with guided, accessibility-focused learning paths.</div>
+          <a href="https://drive.google.com/file/d/1g56QLRJmKVDHxj8jCRNKgy9crq2t3PSg/view?usp=drive_link" target="_blank" rel="noopener" class="case-link">Read case study →</a>
+        </div>
+      </div>
+      <div class="case-card reveal">
+        <div class="case-bar" style="background:linear-gradient(90deg,#ef4444,#ec4899)"></div>
+        <div class="case-body">
+          <div class="case-title">VitaFit Gamification & Community</div>
+          <div class="case-desc">PRD for retention — points system, consistency streaks, and social challenges to boost Weekly Active Users.</div>
+          <a href="https://drive.google.com/file/d/1f_6eHLm8tpYrC2lqEI4w29VTByZ-U1nZ/view?usp=drive_link" target="_blank" rel="noopener" class="case-link">Read case study →</a>
+        </div>
+      </div>
+      <div class="case-card reveal">
+        <div class="case-bar" style="background:linear-gradient(90deg,#6366f1,#8b5cf6)"></div>
+        <div class="case-body">
+          <div class="case-title">RoomSync: Shared Expenses App</div>
+          <div class="case-desc">Collaborative vs. AI-automated bill splitting — chose the collaborative model to prioritize transparency and trust.</div>
+          <a href="https://drive.google.com/file/d/1w3VLNnvS7AJQ-AS1RjqdQAN8iTWxC4zY/view?usp=drive_link" target="_blank" rel="noopener" class="case-link">Read case study →</a>
+        </div>
+      </div>
+      <div class="case-card reveal">
+        <div class="case-bar" style="background:linear-gradient(90deg,#22c55e,#16a34a)"></div>
+        <div class="case-body">
+          <div class="case-title">Spotify Premium Growth Strategy</div>
+          <div class="case-desc">Micro-Premium sachet plans and exclusive 'Stories' content to convert free users in price-sensitive markets.</div>
+          <a href="https://drive.google.com/file/d/1YBz1HF76DsTeYCR8HMizVMblHZzpJvzR/view?usp=drive_link" target="_blank" rel="noopener" class="case-link">Read case study →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="bg2">
+  <div class="section-inner">
+    <p class="section-label">Education</p>
+    <h2 class="section-title">Academic<br><em>foundations</em></h2>
+    <div class="section-rule"></div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-period">2025</div>
+        <div class="edu-degree">Product Management Accelerator Certification</div>
+        <div class="edu-inst">IIT-R / HelloPM</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-period">2015 – 2017</div>
+        <div class="edu-degree">Master's Degree, Biotechnology</div>
+        <div class="edu-inst">Vellore Institute of Technology</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-period">2012 – 2015</div>
+        <div class="edu-degree">Bachelor's Degree, Biotechnology</div>
+        <div class="edu-inst">Govt. Holkar Science College, Indore</div>
+      </div>
+    </div>
+    <p class="section-label" style="margin-top:3.5rem;">Certifications</p>
+    <div class="certs-grid">
+      <div class="cert-card reveal"><div class="cert-check">✓</div><div><div class="cert-title">Product Prioritization Micro-Certification (PPC)™</div><div class="cert-issuer">Product School</div></div></div>
+      <div class="cert-card reveal"><div class="cert-check">✓</div><div><div class="cert-title">From Idea to Prototype: Build Fast with Lovable</div><div class="cert-issuer">Lovable</div></div></div>
+      <div class="cert-card reveal"><div class="cert-check">✓</div><div><div class="cert-title">Product Management Basics Certification</div><div class="cert-issuer">Udemy</div></div></div>
+      <div class="cert-card reveal"><div class="cert-check">✓</div><div><div class="cert-title">Super Certified</div><div class="cert-issuer">Super / Pendo.io</div></div></div>
+      <div class="cert-card reveal"><div class="cert-check">✓</div><div><div class="cert-title">Product Discovery Certification</div><div class="cert-issuer">Product School</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Let's talk</p>
+    <h2 class="section-title">Open to new<br><em>opportunities</em></h2>
+    <div class="section-rule"></div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="contact-text">I work best where strategy meets execution — at companies building something real, where the role needs someone who can think in systems and get things shipped. If that sounds like your team, let's talk.</p>
+        <div class="contact-links">
+          <a href="mailto:smalviya1105@gmail.com" class="contact-link"><span>✉</span><span class="contact-link-mono">smalviya1105@gmail.com</span></a>
+          <a href="https://www.linkedin.com/in/shivangi-malviya1105" target="_blank" rel="noopener" class="contact-link"><span style="font-weight:700;font-size:.85rem">in</span><span class="contact-link-mono">linkedin.com/in/shivangi-malviya1105</span></a>
+          <div class="contact-link" style="cursor:default;"><span>📍</span><span class="contact-link-mono">Indore, India · 22.7196° N, 75.8577° E</span></div>
+        </div>
+      </div>
+      <div class="open-to reveal">
+        <div class="open-to-title">// open to</div>
+        <div class="open-to-item">Product Manager — B2B SaaS or AI products</div>
+        <div class="open-to-item">GTM Manager / Growth Manager — fintech or enterprise</div>
+        <div class="open-to-item">Chief of Staff — early or growth-stage startup</div>
+        <div class="open-to-item">Founder's Office — high-ownership, cross-functional</div>
+        <div class="open-to-item">Open to relocation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Shivangi Malviya</span>
+  <span class="footer-copy">// product · gtm · strategy · builder</span>
+</footer>
+
+<script>
+function navTo(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth'});
+}
+
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [];
+
+function resize(){
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+
+function initStars(){
+  stars = [];
+  for(let i=0;i<160;i++){
+    stars.push({
+      x: Math.random()*W, y: Math.random()*H,
+      r: Math.random()*1.2+.2,
+      a: Math.random(),
+      speed: Math.random()*.3+.05,
+      drift: (Math.random()-.5)*.15
+    });
+  }
+}
+
+function drawStars(){
+  ctx.clearRect(0,0,W,H);
+  // Subtle grid lines
+  ctx.strokeStyle='rgba(200,146,42,.03)';
+  ctx.lineWidth=1;
+  const gs=80;
+  for(let x=0;x<W;x+=gs){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  for(let y=0;y<H;y+=gs){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+
+  // Stars
+  for(const s of stars){
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(240,236,224,${s.a * .6})`;
+    ctx.fill();
+    s.y -= s.speed;
+    s.x += s.drift;
+    s.a = .3 + .7*Math.abs(Math.sin(Date.now()*.001 + s.x));
+    if(s.y < -2){s.y=H+2; s.x=Math.random()*W;}
+    if(s.x<-2||s.x>W+2){s.x=Math.random()*W; s.y=Math.random()*H;}
+  }
+  requestAnimationFrame(drawStars);
+}
+
+resize();
+initStars();
+drawStars();
+window.addEventListener('resize',()=>{resize();initStars();});
+
+// ── Scroll reveals ──
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
